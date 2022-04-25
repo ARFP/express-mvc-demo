@@ -39,6 +39,7 @@ router.get('/candidates/edit/:id', candidatesController.update)
 router.post('/candidates/edit/:id', candidatesController.update_post)
 
 router.get('/candidates/delete/:id', candidatesController.remove)
+router.post('/candidates/delete/:id', candidatesController.remove_post)
 
 router.get('/candidates/add', candidatesController.add)
 router.post('/candidates/add', candidatesController.add_post)

@@ -29,6 +29,7 @@ module.exports = {
      * Affiche un candidat ou erreur 404 si identifiant inexistant
      * @param {Request} req 
      * @param {Response} res 
+     * @todo contrôle de saisie sur "req.params.id"
      */
     async getById(req, res) {
         try {
@@ -53,7 +54,7 @@ module.exports = {
      * POST /candidates/add
      * @param {Request} req 
      * @param {Response} res 
-     * @todo contrôle de saisie
+     * @todo contrôle de saisie sur "req.body"
      */
     async add_post(req, res) {
         let model = req.body 
@@ -68,6 +69,7 @@ module.exports = {
      * Affiche le formulaire permettant de modifier un candidat 
      * @param {Request} req 
      * @param {Response} res 
+     * @todo contrôle de saisie sur "req.params.id"
      */
      async update(req, res) {
         let result = await repo.getById(req.params.id)
@@ -78,7 +80,7 @@ module.exports = {
      * POST /candidates/edit/:id 
      * @param {Request} req 
      * @param {Response} res 
-     * @todo contrôle de saisie
+     * @todo contrôle de saisie sur "req.body"
      */
     async update_post(req, res) {
         let model = req.body 
@@ -94,9 +96,22 @@ module.exports = {
      * Affiche la page de confirmation de suppression d'un candidat 
      * @param {Request} req 
      * @param {Response} res 
+     * @todo contrôle de saisie sur "req.params.id"
      */
     async remove(req, res) {
         let result = await repo.getById(req.params.id)
         res.render('candidate_delete', { model : result })
+    },
+
+    /**
+     * POST /candidates/delete/:id 
+     * @param {Request} req 
+     * @param {Response} res 
+     * @todo contrôle de saisie sur "req.params.id"
+     */
+     async remove_post(req, res) {
+        await repo.delete(req.params.id)
+
+        res.redirect('/candidates')
     }
 }
