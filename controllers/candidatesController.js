@@ -50,6 +50,20 @@ module.exports = {
     },
 
     /**
+     * POST /candidates/add
+     * @param {Request} req 
+     * @param {Response} res 
+     * @todo contrôle de saisie
+     */
+    async add_post(req, res) {
+        let model = req.body 
+
+        let result = await repo.create(model)
+
+        res.redirect('/candidates')
+    },
+
+    /**
      * GET /candidates/edit/:id
      * Affiche le formulaire permettant de modifier un candidat 
      * @param {Request} req 
@@ -58,6 +72,21 @@ module.exports = {
      async update(req, res) {
         let result = await repo.getById(req.params.id)
         res.render('candidate_edit', { model : result })
+    },
+
+    /**
+     * POST /candidates/edit/:id 
+     * @param {Request} req 
+     * @param {Response} res 
+     * @todo contrôle de saisie
+     */
+    async update_post(req, res) {
+        let model = req.body 
+        console.log(model)
+
+        let result = await repo.update(model)
+
+        res.redirect('/candidates')
     },
 
     /**

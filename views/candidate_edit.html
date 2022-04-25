@@ -11,11 +11,13 @@
     <input type="hidden" name="id" value="{{ model.id }}">
 
     <div>
-        <label for="lastname">Nom: </label> <input type="text" id="lastname" name="lastname" value="{{ model.lastname }}">
+        <label for="lastname">Nom: </label> 
+        <input type="text" id="lastname" name="lastname" value="{{ model.lastname }}" required pattern="[a-zA-Z]{2,16}" title="toto n'est pas content">
     </div>
     
     <div>
-        <label for="firstname">Prénom: </label> <input type="text" id="firstname" name="firstname" value="{{ model.firstname }}">
+        <label for="firstname">Prénom: </label> 
+        <input type="text" id="firstname" name="firstname" value="{{ model.firstname }}" required>
     </div>
     
     <div>

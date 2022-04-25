@@ -12,7 +12,8 @@
 </ul>
 
 <p>
-    <a href="/candidates/edit/:id">Modifier ce candidat</a> | <a href="/candidates/delete/:id">Supprimer ce candidat</a>
+    <a href="/candidates/edit/{{ model.id }}">Modifier ce candidat</a> | 
+    <a href="/candidates/delete/{{ model.id }}">Supprimer ce candidat</a>
 </p>
 
 {% include "footer.html" %}
